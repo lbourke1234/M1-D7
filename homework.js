@@ -117,6 +117,9 @@ ASSIGNMENT RULES
 //     }return strWithoutNos
 // }
 // console.log(onlyLetters("I think I own 65 dogs and 2 cats"))
+// // console.log(parseInt("He770"[4]))
+// strWithoutNos[0] = strWithoutNos[0].concat("R")
+// console.log(onlyLetters())
 
 /* EXERCISE 6
    Write a function called isThisAnEmail which receives a string as a parameter and returns true if the string is a valid email address.
@@ -133,31 +136,12 @@ ASSIGNMENT RULES
    Write a function called whatDayIsIt that should return the current day of the week.
 */
 // function whatDayIsIt(){
-//     let today = Date()
-//     if (today.includes("Mon")){
-//         return "Today is Monday"
-//     }
-//     if (today.includes("Tue")){
-//         return "Today is Monday"
-//     }
-//     if (today.includes("Wed")){
-//         return "Today is Monday"
-//     }
-//     if (today.includes("Thu")){
-//         return "Today is Monday"
-//     }
-//     if (today.includes("Fri")){
-//         return "Today is Monday"
-//     }
-//     if (today.includes("Sat")){
-//         return "Today is Monday"
-//     }
-//     if (today.includes("Sun")){
-//         return "Today is Monday"
-//     }
+//     let date = new Date()
+//     let weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+//     let day = weekdays[date.getDay()]
+//     document.getElementById("myId").innerHTML = day
 // }
 // console.log(whatDayIsIt())
-// console.log(Date())
 
 /* EXERCISE 8
     Write a function called rollTheDices which receives a number as a parameter.
@@ -183,13 +167,17 @@ ASSIGNMENT RULES
 
 // function howManyDays(date){
 //     let today = new Date()
-//     return today
+//     return today - date
 // }
-// console.log(howManyDays())
+// console.log(howManyDays(20220209))
 
 /* EXERCISE 10
    Write a function called isTodayMyBirthday which should return true if today's your birthday, false otherwise.
 */
+// function isTodayMyBirthday(){
+
+// }
+
 
 // JS Arrays & Objects
 // NOTE: the movies array used in some exercises is defined at the end of this file
@@ -317,10 +305,10 @@ const movies = [
 //     name: "Leon",
 //     age: 28
 // }
-// function deleteProp(obj, str){
-//     return delete(obj.str)
+// function deleteProp(obj, _str){
+//     return delete(obj._str)
 // }
-// deleteProp(leon, "name")
+// deleteProp(leon, "age")
 // console.log(leon)
 
 
@@ -336,10 +324,15 @@ const movies = [
 //         if (movies[i].Year < oldest){
 //             oldest = movies[i].Year
 //         }
-//     }return oldest
-
+//     }
+//     for (let i = 0; i < movies.length; i++){
+//         if (oldest === movies[i].Year){
+//             console.log(movies[i].Title)
+//         }
+//     }
 // }
-// console.log(oldestMovie())
+// oldestMovie()
+
 
 
 /* EXERCISE 13
@@ -356,11 +349,14 @@ const movies = [
 // let titles = []
 // function onlyTheTitles(){
 //     for (let i = 0; i < movies.length; i++){
-//         titles[i] = movies[i].Title
+//             titles.push(movies[i].Title)    
 //     }
+//     return titles
 // }
+// // titles.push("hello")
+// // titles.push("Byebye")
 
-// console.log(titles)
+// console.log(onlyTheTitles())
 
 /* EXERCISE 15
    Write a function called onlyInThisMillennium which returns only the movies produced in this millennium from the provided movies array.
@@ -369,23 +365,33 @@ const movies = [
 // function onlyInThisMillennium(){
 //     for (let i = 0; i < movies.length; i++){
 //         if (movies[i].Year >= 2000){
-//             milleniumMovies[i] = movies[i].Year
+//             milleniumMovies[i] = movies[i]
 //         }
 //     }return  milleniumMovies
 // }
-// console.log(milleniumMovies)
+// console.log(onlyInThisMillennium())
 
 /* EXERCISE 16 
     Write a function called getMovieById which receives an id as a parameter and returns the movie with the given id from the provided movies array.
 */
 
+// function getMovieById(id){
+//     for (let i = 0; i < movies.length; i++){
+//         if (id === movies[i].imdbID){
+//             return movies[i]
+//         }
+//     }
+// }
+// console.log(getMovieById("tt2395427"))
+// console.log(getMovieById("tt0087365"))
+
 /* EXERCISE 17
     Write a function called sumAllTheYears which returns the sum of all the years in which the movies in the provided movies array have been produced.
 */
-// let sum = 0
+// let sum = null
 // function sumAllTheYears(){
 //     for (let i = 0; i < movies.length; i++){
-//         sum += movies.Year
+//         sum += parseInt(movies[i].Year)
 //     }
 // return sum    
 // }
@@ -394,6 +400,15 @@ const movies = [
 /* EXERCISE 18
     Write a function called searchByTitle which receives a string as a parameter and returns all the movies in the provided movies array which contain that string in the title.
 */
+// let moviesWithGivenString = []
+// function searchByTitle(str){
+//     for (let i = 0; i < movies.length; i++){
+//         if (movies[i].Title.includes(str)){
+//             moviesWithGivenString.push(movies[i])
+//         }
+//     }return moviesWithGivenString
+// }
+// console.log(searchByTitle("Greystoke"))
 
 /* EXERCISE 19
     Write a function called searchAndDivide which receives a string as a parameter and returns an object;
@@ -401,9 +416,37 @@ const movies = [
     and another array unmatch with all the remaining ones.
 */
 
+// let objectOfArrays = {
+//     match: [],
+//     unmatch: []
+// }
+
+// function searchAndDivide(str){
+//     for (let i = 0; i < movies.length; i++){
+//         if (movies[i].Title.includes(str)){
+//             objectOfArrays.match.push(movies[i].Title)
+//         } else {
+//             objectOfArrays.unmatch.push(movies[i].Title)
+//         }
+//     }return objectOfArrays
+    
+// }
+// console.log(searchAndDivide("Salem"))
+
 /* EXERCISE 20
    Write a function called "removeIndex" which receives a number as a parameter and returns the provided movies array without the element in the given position.
 */
+// let movieList = []
+// function removeIndex(num){
+//     for (let i = 0; i < movies.length; i++){
+//         if (num == movies[i]){
+//             continue
+//         } else {
+//             movieList.push(movies[i])
+//         }
+//     }return movieList
+// }
+// console.log(removeIndex(1))
 
 // [EXTRAS] JS Advanced
 
